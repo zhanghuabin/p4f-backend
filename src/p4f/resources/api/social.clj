@@ -3,10 +3,10 @@
             [liberator.core :refer [defresource]]))
 
 
+
 (defn- wrap-response-body
   [body]
   {::response {::body body}})
-
 
 
 (defresource dice
