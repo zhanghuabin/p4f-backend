@@ -10,3 +10,7 @@ pom.xml.asc
 .lein-plugins/
 .lein-failures
 .nrepl-port
+profiles.clj
+dev/user.clj
+.idea/
+*.iml
