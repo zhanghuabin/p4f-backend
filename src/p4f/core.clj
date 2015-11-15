@@ -5,9 +5,11 @@
         [ring.middleware.stacktrace :only (wrap-stacktrace)]))
 
 
+
 (defn -main [& args]
   (run-jetty
-    (-> #'app
-        (wrap-reload)
-        (wrap-stacktrace))
+    (->
+      #'app
+      (wrap-reload)
+      (wrap-stacktrace))
     {:port 8080 :join? false :auto-reload? true}))

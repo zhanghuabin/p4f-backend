@@ -3,13 +3,31 @@
             [liberator.core :refer [defresource]]))
 
 
+(defn- wrap-response-body
+  [body]
+  {::response {::body body}})
+
+
+
 (defresource dice
+  ^{:doc "骰子"}
   []
   :available-media-types #{"application/json"}
   :allowed-methods [:post]
-  :post!(fn [{{{:keys [text]} :params} :request}]
-           {:roll-result (roll) :message text})
-  :handle-created (fn [ctx]
-                    (->> (map #(do {% (% ctx)})
-                              '(:roll-result :message))
-                         (into {}))))
+
+  :post!
+  (fn [context]
+    (let [params  (get-in context [:request :params])
+          text    (:text params)]
+      (wrap-response-body
+        {::roll-result  (roll)
+         ::message      text})))
+
+  :handle-created
+  (fn [context]
+    (let [response-body (get-in context [::response ::body])]
+      (->>
+        response-body
+        (map (fn [[k v]] {(keyword k) v}))
+        (into {})))))
+

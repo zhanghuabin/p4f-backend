@@ -4,6 +4,7 @@
             [liberator.core :refer [defresource]]))
 
 
+
 (defn home-page
   []
   (log/debug "access home page")
