@@ -26,8 +26,5 @@
   :handle-created
   (fn [context]
     (let [response-body (get-in context [::response ::body])]
-      (->>
-        response-body
-        (map (fn [[k v]] {(keyword k) v}))
-        (into {})))))
+      response-body)))
 
