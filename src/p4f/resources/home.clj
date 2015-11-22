@@ -1,7 +1,6 @@
 (ns p4f.resources.home
-  (:require [clojure.tools.logging :as log]
-            [hiccup.page :refer [html5 include-css]]
-            [liberator.core :refer [defresource]]))
+  (:require [taoensso.timbre :as log]
+            [hiccup.page :refer [html5 include-css]]))
 
 
 

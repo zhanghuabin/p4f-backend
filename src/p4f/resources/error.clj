@@ -1,6 +1,5 @@
 (ns p4f.resources.error
-  (:require [hiccup.page :refer [html5]]
-            [liberator.core :refer [defresource]]))
+  (:require [hiccup.page :refer [html5]]))
 
 
 
