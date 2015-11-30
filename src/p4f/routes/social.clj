@@ -1,5 +1,5 @@
 (ns p4f.routes.social
-  (:require [p4f.resources.api.social :refer [dice]]
+  (:require [p4f.resources.social :refer [dice]]
             [compojure.core :refer [ANY]]))
 
 
