@@ -1,8 +1,8 @@
 (ns p4f.routes.home
   (:require [p4f.resources.home :refer [home-page]]
-            [compojure.core :refer [GET]]))
+            [compojure.core :refer [ANY]]))
 
 
 
 (def home-routes
-  (GET "/" [] (home-page)))
+  (ANY "/" [] (home-page)))

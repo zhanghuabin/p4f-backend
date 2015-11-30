@@ -30,10 +30,14 @@
                  [org.clojure/tools.reader "0.10.0"]
                  ;[org.clojure/tools.logging "0.3.1"]
                  [environ "1.0.1"]
+                 ;; db ====>
+                 [korma "0.4.2"]
+                 [org.clojure/java.jdbc "0.4.2"]
+                 ;; <==== db
                  ;; ring ====>
                  [ring "1.4.0"
                   :exclusions [ring/ring-jetty-adapter]]
-                 [cc.qbits/jet "0.7.0"]
+                 [cc.qbits/jet "0.7.1"]
                  ;; <==== ring
                  ;; compojure
                  [compojure "1.4.0"]
@@ -41,7 +45,8 @@
                  [ring/ring-defaults "0.1.5"]
                  [ring-ttl-session "0.3.0"]
                  [metosin/ring-middleware-format "0.6.0"]
-                 [metosin/ring-swagger-ui "2.1.3-2"]
+                 [metosin/ring-swagger-ui "2.1.3-4"]
+                 [lib-noir "0.9.9"]
                  [prone "0.8.2"]
                  [selmer "0.9.5"]
                  ;; <==== ring middleware
@@ -68,8 +73,9 @@
                  ;[ch.qos.logback/logback-classic "1.1.3" :scope "runtime"]
                  ;[org.codehaus.groovy/groovy-all "2.4.5" :classifier "indy" :scope "runtime"]
 
-  ;; lein $ jvm
+  ;; lein & jvm
   :min-lein-version   "2.5.0"
+  ;:repl-options       {:timeout 120000}
   :javac-options      ["-source" "1.8" "-target" "1.8"]
   :jvm-opts ^:replace ["-server"
                        "-Xms2g"

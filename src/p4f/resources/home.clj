@@ -1,10 +1,11 @@
 (ns p4f.resources.home
   (:require [taoensso.timbre :as log]
-            [hiccup.page :refer [html5 include-css]]))
+            [hiccup.page :refer [html5 include-css]]
+            [liberator.core :refer [defresource]]))
 
 
 
-(defn home-page
+(defn- make-home-page
   []
   (log/debug "access home page")
   (html5
@@ -13,3 +14,13 @@
      (include-css "/css/style.css")]
     [:body
      [:h1 "Hello, World!!!"]]))
+
+(defresource home-page
+  ^{:doc "注册签约"}
+  []
+  :allowed-methods [:get]
+  :available-media-types #{"text/html"}
+
+  :handle-ok
+  (fn [_]
+   (make-home-page)))

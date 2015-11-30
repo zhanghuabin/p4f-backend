@@ -1,12 +1,8 @@
-(ns p4f.resources.api.social
+(ns p4f.resources.social
   (:require [p4f.services.social :refer [roll]]
+            [p4f.utils.resource :refer [wrap-response-body unwrap-context]]
             [liberator.core :refer [defresource]]))
 
-
-
-(defn- wrap-response-body
-  [body]
-  {::response {::body body}})
 
 
 (defresource dice
@@ -25,6 +21,5 @@
 
   :handle-created
   (fn [context]
-    (let [response-body (get-in context [::response ::body])]
-      response-body)))
+    (unwrap-context context)))
 

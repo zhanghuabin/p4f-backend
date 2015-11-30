@@ -1,5 +1,6 @@
 (ns p4f.middleware
   (:require [environ.core :refer [env]]
+            [noir.session :refer [wrap-noir-session]]
             [selmer.middleware :refer [wrap-error-page]]
             [prone.middleware :refer [wrap-exceptions]]
             [ring-ttl-session.core :refer [ttl-memory-store]]
@@ -28,4 +29,5 @@
       (wrap-defaults
         (-> site-defaults
             (assoc-in [:security :anti-forgery] false)
-            (assoc-in [:session :store] (ttl-memory-store (* 60 30)))))))
+            (assoc-in [:session :store] (ttl-memory-store (* 60 30)))))
+      wrap-noir-session))
